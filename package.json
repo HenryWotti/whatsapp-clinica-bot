@@ -3,13 +3,42 @@
     "version": "1.0.0",
     "description": "Bot WhatsApp para Clínica Odontológica",
     "main": "server.js",
+    "bin": "server.js",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
     "dependencies": {
-      "express": "^4.18.2",
-      "qrcode-terminal": "^0.12.0",
-      "whatsapp-web.js": "^1.23.0"
+        "@adiwajshing/baileys": "^3.5.3",
+        "axios": "^1.7.9",
+        "bwip-js": "^4.5.1",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "fs": "^0.0.1-security",
+        "luxon": "^3.5.0",
+        "mssql": "^11.0.1",
+        "nodemailer": "^6.10.0",
+        "oracledb": "^6.7.2",
+        "path": "^0.12.7",
+        "pdfkit": "^0.16.0",
+        "puppeteer": "^19.11.1",
+        "qrcode-terminal": "^0.12.0",
+        "whatsapp-web.js": "^1.26.0",
+        "xlsx": "^0.18.5"
+    },
+    "pkg": {
+        "scripts": [
+            "src/**/*.js"
+        ],
+        "targets": [
+            "node16-win-x64"
+        ],
+        "outputPath": "dist"
+    },
+    "devDependencies": {
+        "electron": "^34.2.0",
+        "electron-builder": "^25.1.8"
     }
-  }
-  
+}
