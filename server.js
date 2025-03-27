@@ -161,7 +161,7 @@ client.on('message', async (message) => {
 
   const userState = userStates[sender];
 
-  if (userStates[sender] === 'oi' || userStates[sender] === 'olá') {
+  if (userStates[sender] === 'termos') {
     await message.reply(
       `Olá! 👋 Bem-vindo à Clínica Odontológica!
 
