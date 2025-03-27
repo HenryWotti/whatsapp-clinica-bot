@@ -2,7 +2,6 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const express = require('express');
 const qrcode = require('qrcode-terminal');
-const QRCode = require('qrcode');
 const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,7 +13,7 @@ const client = new Client({
   },
 });
 
-let latestQR = '';
+
 const userStates = {}; // Armazena o estado dos usuários e o tempo de última atividade
 const userLastActivity = {}; // Última atividade de cada usuário
 const INACTIVITY_TIMEOUT = 4 * 60 * 1000; // 2 minutos em milissegundos
@@ -89,15 +88,8 @@ const sendMenu = async (sender) => {
 };
 
 client.on('qr', (qr) => {
-  latestQR = qr;
-  console.log('QR Code atualizado. Acesse /qr para visualizar como imagem.');
-});
-
-// Rota para exibir o QR como imagem
-app.get('/qr', async (req, res) => {
-  if (!latestQR) return res.send('QR ainda não gerado');
-  const qrImage = await QRCode.toDataURL(latestQR);
-  res.send(`<img src="${qrImage}" style="width:300px;">`);
+  qrcode.generate(qr, { small: true });
+  console.log('QR Code gerado. Escaneie com seu WhatsApp.');
 });
 
 client.on('ready', () => {
